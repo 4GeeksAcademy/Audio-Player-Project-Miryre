@@ -5,13 +5,15 @@ const NowPlaying = ({ currentSong }) => {
   const [isPlaying, setIsPlaying] = useState(false);
 
   useEffect(() => {
-    if (audioRef.current && currentSong?.url) {
+    if (currentSong?.url) {
       audioRef.current.load();
-      audioRef.current.play().catch((err) =>
-        console.error("Auto-play failed:", err)
-      );
+      audioRef.current.play()
+      console.log("audioRef", audioRef)
+      // .catch((err) =>
+      //   console.error("Auto-play failed:", err)
+      // );
       setIsPlaying(true);
-    }
+    }  console.log("audioRef", audioRef)
   }, [currentSong]);
 
   const togglePlayPause = () => {
@@ -36,7 +38,7 @@ const NowPlaying = ({ currentSong }) => {
         <>
           <audio ref={audioRef}>
             <source
-              src={`https://assets.breatheco.de/apis/sound/${currentSong.url}`}
+              src={`https://assets.breatheco.de/apis${currentSong.url}`}
               type="audio/mp3"
             />
             Your browser does not support the audio element.

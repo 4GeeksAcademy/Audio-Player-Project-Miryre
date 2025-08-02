@@ -1,11 +1,12 @@
 import React from 'react';
 
-const SongList = ({ songs }) => {
+const SongList = ({ songs, onPlay }) => {
   
   const handleSong = (song) => {
 
     console.log("insideOfSongList",song[0].url);
   };
+
   const newSongs =[...songs]
   return (
     <ul className="list-group">
@@ -21,7 +22,7 @@ const SongList = ({ songs }) => {
           {song.name}
           <button
             className="btn btn-primary btn-sm"
-            onClick={() => handleSong(newSongs) }
+            onClick={() => onPlay(song) }
             // onClick={() => onPlay(song)}
           >
             Play
